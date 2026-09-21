@@ -1,0 +1,17 @@
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  padding: var(--spacing-xl) 0;
+}
+
+.top-section {
+  text-align: center;
+  padding: var(--spacing-xl) var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  /* background: var(--color-link); */
+  /* background-color: #99cfdb; */
+  background-color: var(--color-bg-top);
+  color: var(--color-text-top-section);
+  border-radius: var(--radius-lg);
+}

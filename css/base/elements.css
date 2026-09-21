@@ -1,0 +1,53 @@
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.6;
+  padding: var(--space-lg);
+  
+  
+  background-image: radial-gradient(
+    circle,
+    rgba(53, 107, 131, 0.18) 1px,
+    transparent 1px
+  );
+  background-size: 24px 24px;
+} 
+
+
+
+a {
+  color: var(--color-text);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--color-link-hover);
+  }
+}
+
+.main-header {
+  font-family: var(--font-main-header);
+  font-size: 80px;
+  color: var(--color-header-main);
+  text-align: center;
+  margin: var(--spacing-3xl);
+  margin-bottom: var(--spacing-md);
+  line-height: 0.8;
+
+  /* Specific to "Tilt Prism" font family: */
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "XROT" 0,
+    "YROT" 0; 
+}
+
+.sub-header {
+  margin-bottom: var(--spacing-lg);
+}
+
+h2 { 
+  color: var(--color-text-top-section);
+}
+

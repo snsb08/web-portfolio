@@ -1,0 +1,80 @@
+:root {
+    /* --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 2rem; */
+    --font-body: helvetica, sans-serif;
+
+    /* Font Families */
+    --font-main-header: "Tilt Prism", sans-serif;
+    /* font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "XROT" 0,
+    "YROT" 0; */
+
+     /* Typography */
+    --font-family-sans: system-ui, sans-serif;
+    --font-family-mono: monospace;
+    --font-size-xs: clamp(0.9rem, 0.227vw + 0.827rem, 1.1rem);
+    --font-size-sm: clamp(1.2rem, 0.227vw + 1.127rem, 1.4rem);
+   /*Base body size*/
+    --font-size-md: clamp(1.6rem, 0.227vw + 1.527rem, 1.8rem);
+    --font-size-lg: clamp(2.1rem, 0.795vw + 1.846rem, 2.8rem);
+    --font-size-xl: clamp(2.8rem, 0.909vw + 2.509rem, 3.6rem);
+
+
+    /* Choose topic: Modular Scale in Tokens and Typographic Rhythm */
+    --ratio: 1:333;
+    --base: 1.6rem;
+
+    /* 4.Making the Whole Scale Fluid */
+    --base: clamp(1.6rem, 1.4rem + 1vw, 1.8rem);
+    
+    /* 2. Steps Below the Base with Negative Exponents */
+    --font-size-sm: calc(var(--base) * pow(var(--ratio), -1));
+    --font-size-xs: calc(var(--base) * pow(var(--ratio), -2));
+    /* 1. Computing the Scale with pow() */
+    --font-size-md: var(--base);
+    --font-size-lg: calc(var(--base) * pow(var(--ratio), 1));
+    --font-size-xl: calc(var(--base) * pow(var(--ratio), 2));
+    --font-size-2xl: calc(var(--base) * pow(var(--ratio), 3));
+    --font-size-3xl: calc(var(--base) * pow(var(--ratio), 4));
+
+    /* 3. Snapping to Clean Values with round() */
+    --font-size-xl: round(calc(var(--base) * pow(var(--ratio), 2)), 1px);
+
+
+    /* Role tokens point at scale steps: */
+    --font-size-body:       var(--font-size-md);
+    --font-size-caption:    var(--font-size-xs);
+    --font-size-heading-sm: var(--font-size-lg);
+    --font-size-heading-lg: var(--font-size-xl);
+    --font-size-display:    var(--font-size-xl);
+    --font-family-heading: var(--font-family-sans);
+    --font-family-body:    var(--font-body);
+
+
+    /* Spacing */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-2xl: 48px;
+    --spacing-3xl: 64px;
+    /* Radii */
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 8px;
+    --radius-xl: 12px;
+    /* Transitions */
+    --transition-base: 0.2s ease;
+    /* Icons */
+    --icon-size-sm: 24px;
+    --icon-size-md: 32px;
+    /* Focus */
+    --outline-width: 2px;
+}
+
+
