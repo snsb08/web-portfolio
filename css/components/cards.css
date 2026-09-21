@@ -1,0 +1,262 @@
+
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+}
+
+.card {
+  /* background: white; */
+  background-color: var(--color-surface);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-xl);
+  margin: var(--spacing-lg);
+
+  /* box-shadow: 0 4px 10px rgba(0,0,0,0.08); */
+  box-shadow: var(--shadow-raised-sm);
+  
+
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-raised-lg);
+  }
+}
+
+
+.card-section {
+
+    
+    article:nth-child(1) > img {
+        /* Circular text wrap around a floated image */
+            float: left;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            shape-outside: circle(50%);
+        /* shape-outside: polygon(0% 0%, 100% 0%, 100% 100%, 30% 100%); */
+       
+
+            margin-right: 1.5rem;
+            margin-bottom: 0.5rem;
+        
+            
+
+        &:hover{
+            box-shadow: var(--shadow-raised-lg);
+    }
+  }
+
+  article:nth-child(1) {
+    height: 250px;
+  }
+
+    article:nth-child(2) {
+        /* shape-outside: polygon(diagonal); */
+
+        &:hover{
+            /* background: linear-gradient(to right, oklch(0.95 0.02 250), oklch(0.85 0.04 250)); */
+            background: linear-gradient(135deg, var(--color-surface), oklch(0.85 0.04 250));
+    }
+  }
+
+   article:nth-child(3) > img {
+
+    /* float: left;
+    width: 300px;
+    shape-outside: url('/images/cutout.png');
+    shape-outside: ellipse(50%);
+    shape-image-threshold: 0.5;
+    shape-margin: 1rem; */
+
+        &:hover{ 
+        filter: sepia(0.6);}
+  }
+}
+
+
+
+
+
+/* --------------------------------------------------------------------------------------------------------- */
+/* ================================
+   CERTIFICATES
+================================ */
+
+/* .certificates {
+  margin-top: 2.5rem;
+} */
+
+.certificates > h2 {
+  margin-bottom: 0.5rem;
+}
+
+.section-intro {
+  margin-bottom: 1.5rem;
+  opacity: 0.8;
+}
+
+.certificate-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.certificate-card {
+  display: flex;
+  gap: 1rem;
+
+  padding: 1.25rem;
+
+  border: 1px solid var(--border-color, #ddd);
+  border-radius: 1rem;
+
+  /* background: var(--card-background, #fff); */
+   background-color: var(--color-surface);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.certificate-card:hover {
+  transform: translateY(-4px);
+
+  border-color: var(--color-accent, #635bff);
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Certificate icon */
+
+.certificate-icon {
+  flex: 0 0 3.5rem;
+
+  width: 3.5rem;
+  height: 3.5rem;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 0.85rem;
+
+  background: color-mix(
+    in srgb,
+    var(--color-accent, #ff5b6e) 50%,
+    transparent);
+
+  font-size: 1.5rem;
+}
+
+
+/* Card content */
+
+.certificate-content {
+  min-width: 0;
+}
+
+.certificate-content h3 {
+  margin: 0.25rem 0 0.75rem;
+}
+
+.certificate-content p {
+  line-height: 1.6;
+}
+
+.certificate-date {
+  margin: 0;
+
+  font-size: 0.8rem;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+
+  color: var(--color-accent, #ff5b6e);
+}
+
+
+/* Skill tags */
+
+.certificate-skills {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 0.4rem;
+
+  margin: 1rem 0 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.certificate-skills li {
+  padding: 0.3rem 0.6rem;
+
+  border-radius: 999px;
+
+  background: color-mix(
+    in srgb,
+    var(--color-accent, #ff5b6e) 12%,
+    transparent
+  );
+
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+
+/* Mobile */
+
+@media (max-width: 750px) {
+  .certificate-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .certificate-card {
+    flex-direction: column;
+  }
+
+  .certificate-icon {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+
+/* Skills card */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.skills-grid div {
+  padding: 1rem;
+
+  border-left: 3px solid var(--color-accent, #ff5b6e);
+}
+
+.skills-grid h3 {
+  margin-top: 0;
+}
+
+.skills-grid p {
+  margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}

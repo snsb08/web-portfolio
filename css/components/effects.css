@@ -1,0 +1,77 @@
+.hero {
+    
+    /* box-shadow: var(--shadow-raised-lg); */
+    height: 500px;
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 40%,
+            oklch(0.1 0 0 / 0.6) 100%
+        ) ,
+        url('https://picsum.photos/seed/hero-effects/1200/500') center / cover;
+
+        /* background: radial-gradient(circle 200px at 30% 40%, oklch(0.95 0.01 80), oklch(0.85 0.03 60)); */
+}
+
+.hero-image {
+    
+    display: none;
+}
+
+
+
+
+.hero-content {
+    h1 {
+        text-shadow: var(--shadow-md);
+    }
+}
+
+.glass-section {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+}
+
+.glass-background {
+  position: absolute;
+  inset: 0;
+}
+
+.glass-bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.glass-panel {
+  position: relative;
+  z-index: 10;
+
+  height: 500px;
+
+   background: light-dark(
+        rgba(255, 255, 255, 0.6),
+        rgba(0, 0, 0, 0.5)
+    );
+    backdrop-filter: blur(1px) saturate(1.4);
+}
+
+.icon-item {
+    
+    &:hover {
+        /* background-color: yellow; */
+    
+    /* filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.3)); */
+    /* filter: drop-shadow(0 0 2px rgba(87, 181, 215, 0.5));} */
+    filter: drop-shadow(0 0 2px currentColor);}
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .glass-panel {
+        backdrop-filter: none;
+        background: rgba(0, 0, 0, 0.7);
+        transition: none;
+    }
+}

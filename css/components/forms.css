@@ -1,0 +1,70 @@
+.contact {
+    max-width: 700px;
+    margin: var(--spacing-lg) auto;
+    padding: var(--spacing-lg);
+}
+
+.contact-form {
+    display: grid;
+    gap: var(--spacing-lg);
+}
+
+.form-group {
+    display: grid;
+    gap: var(--spacing-sm);
+}
+
+label {
+    font-weight: 600;
+}
+
+input,
+textarea,
+button {
+    font: inherit;
+}
+
+input,
+textarea {
+    padding: var(--spacing-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+}
+
+textarea {
+    resize: vertical;
+ /* Supported by Chrome, Edge, Safari */
+    field-sizing: content;
+
+    /* Graceful fallback */
+    min-height: 8rem;
+    max-height: 20rem;
+}
+
+.form-checkbox {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+button {
+    width: fit-content;
+    padding: var(--spacing-md);
+    border: none;
+    border-radius: var(--spacing-lg);
+    background: var(--color-accent);
+    color: var(--color-link);
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+input:focus,
+textarea:focus,
+button:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}

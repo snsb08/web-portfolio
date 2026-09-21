@@ -1,0 +1,26 @@
+{
+  "name": "web-portfolio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "lightningcss --bundle --minify --targets \">= 0.25%\" css/main.css -o dist/styles.css",
+    "watch": "chokidar \"css/**/*.css\" -c \"npm run build\" --debounce 600"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snsb08/web-portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/snsb08/web-portfolio/issues"
+  },
+  "homepage": "https://github.com/snsb08/web-portfolio#readme",
+  "devDependencies": {
+    "chokidar-cli": "^3.0.0",
+    "lightningcss-cli": "^1.33.0"
+  }
+}

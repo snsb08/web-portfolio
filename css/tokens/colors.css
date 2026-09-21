@@ -1,0 +1,135 @@
+:root {
+
+    /* original colors */
+    --color-bg: #9dd1eb;
+    --color-link: #cce7f2; 
+    --color-text: #1e293b;
+    /* --color-text: #70e51c; */
+    --color-text-light: #e6eaef;
+
+    --color-primary: #006eb6;
+    --color-primary-hover: #004f7f;
+    --color-secondary: #4432665a;
+
+    /* new colors */
+    /* #D3E0E3  Ice Blue
+    #264E5B Dark Teal
+    #FDF3D0 Light Yellow */
+
+    /* for unit 3 ----------------------------*/
+    color-scheme: light;
+    /* ---- Seeds ---- */
+    --seed-bg: #f4f6f8;
+    --seed-bg: #3d6fa1;
+    --seed-surface: #ffffff;
+    --seed-text: #1e293b;
+    --seed-text-muted: #64748b;
+    --seed-accent: oklch(0.55 0.2 210);  /* CHANGE THIS: Choose your own hue */
+    /* --seed-accent: oklch(68.433% 0.11987 186.337); */
+    --seed-accent-2: oklch(81.881% 0.10623 103.102); 
+    --seed-accent-hover: color-mix(in oklch, var(--seed-accent) 80%, black);
+    --seed-link: var(--seed-accent);
+    --seed-link-hover: var(--seed-accent-hover);
+    --seed-border: #e2e8f0;
+    --seed-border-strong: #cbd5e1;
+
+    /* ---- Accent ramp ---- */
+    --accent-100: color-mix(in oklch, var(--seed-accent) 10%, white);
+    --accent-200: color-mix(in oklch, var(--seed-accent) 30%, white);
+    --accent-300: color-mix(in oklch, var(--seed-accent) 50%, white);
+    --accent-400: color-mix(in oklch, var(--seed-accent) 75%, white);
+    --accent-500: var(--seed-accent);
+    --accent-600: color-mix(in oklch, var(--seed-accent) 80%, black);
+    --accent-700: color-mix(in oklch, var(--seed-accent) 60%, black);
+    --accent-800: color-mix(in oklch, var(--seed-accent) 40%, black);
+
+    accent-color: var(--color-accent);
+
+    --accent-2-100: color-mix(in oklch, var(--seed-accent-2) 10%, white);
+    --accent-2-200: color-mix(in oklch, var(--seed-accent-2) 30%, white);
+    --accent-2-300: color-mix(in oklch, var(--seed-accent-2) 50%, white);
+    --accent-2-400: color-mix(in oklch, var(--seed-accent-2) 75%, white);
+    --accent-2-500: var(--seed-accent-2);
+    --accent-2-600: color-mix(in oklch, var(--seed-accent-2) 80%, black);
+    --accent-2-700: color-mix(in oklch, var(--seed-accent-2) 60%, black);
+    --accent-2-800: color-mix(in oklch, var(--seed-accent-2) 40%, black);
+}
+
+/* User chose dark */
+html:has(input[name='theme-preference'][value='dark']:checked) {
+    color-scheme: dark;
+}
+
+/* User chose system and OS is dark */
+@media (prefers-color-scheme: dark) {
+    html:has(input[name='theme-preference'][value='system']:checked) {
+        color-scheme: dark;
+    }
+}
+
+:root,
+html {
+    /* ---- Semantic tokens ---- */
+    /* --color-bg: light-dark(var(--seed-bg), oklch(0.18 0.02 260)); */
+    --color-bg: light-dark(var(--accent-100), oklch(0.18 0.02 260));
+    --color-bg-top: light-dark(var(--accent-200), var(--accent-600));
+    --color-bg-nav: light-dark(var(--accent-800), var(--accent-200));
+    --color-surface: light-dark(var(--seed-surface), oklch(0.22 0.03 260));
+    --color-text: light-dark(var(--seed-text), oklch(0.88 0.02 260));
+    --color-text-lighter: light-dark(var(--accent-100), oklch(0.18 0.02 260));
+    --color-text-muted: light-dark(var(--seed-text-muted), oklch(0.68 0.03 250));
+    --color-text-top-section: light-dark(var(--accent-800), var(--accent-200));
+    --color-accent: light-dark(var(--seed-accent), oklch(0.62 0.15 240));
+    --color-accent-hover: light-dark(var(--seed-accent-hover), oklch(0.68 0.18 240));
+    --color-link: light-dark(var(--seed-link), oklch(0.65 0.16 240));
+    --color-link: light-dark(var(--accent-200), var(--accent-800));
+    --color-link-hover: light-dark(var(--seed-link-hover), oklch(0.72 0.18 240));
+    --color-border: light-dark(var(--seed-border), oklch(0.32 0.02 260));
+    --color-border-strong: light-dark(var(--seed-border-strong), oklch(0.38 0.02 260));
+    --color-header-main: light-dark(var(--accent-2-600), var(--accent-2-300));
+    
+
+
+    /* Tint the native checkboxes, radios, and range sliders */
+    accent-color: var(--color-accent);
+
+    /* ---- Header chrome ---- */
+    --header-bg: var(--color-accent);
+    --header-text: light-dark(#ffffff, #f0f4f8);
+
+    /* ---- Theme toggle (consumed by theme-toggle.css) ---- */
+    --theme-toggle-bg: color-mix(in srgb, var(--header-text) 20%, var(--header-bg));
+    --theme-toggle-border: color-mix(in srgb, var(--header-text) 40%, var(--header-bg));
+    --theme-toggle-bg-hover: color-mix(in srgb, var(--header-text) 30%, var(--header-bg));
+    --theme-toggle-border-hover: color-mix(in srgb, var(--header-text) 55%, var(--header-bg));
+
+    /* ---- Shadows ---- */
+    --shadow-color: light-dark(rgb(0 0 0 / 0.09), rgb(0 0 0 / 0.28));
+    --shadow-color-2: light-dark(oklch(0.2 0 0 / 0.08), oklch(27.804% 0.00549 285.96));
+    --shadow-color-3: light-dark(oklch(0.2 0 0 / 0.06), oklch(8.666% 0.04034 274.053));
+    /* --shadow-color-2: yellow; */
+    --shadow-sm: 0 1px 2px 0 var(--shadow-color);
+    --shadow-md: 0 1px 3px 0 var(--shadow-color);
+    --shadow-lg: 0 4px 10px 0 var(--shadow-color);
+
+
+/* add at least two elevation levels as custom properties. 
+These should be layered shadow stacks (two to three shadow layers each) */
+
+    
+     
+    --shadow-raised-sm: 
+     0 1px 2px var(--shadow-color),
+     0 2px 4px var(--shadow-color-2);
+
+    --shadow-raised-md: 
+    0 2px 4px var(--shadow-color),
+    0 4px 8px var(--shadow-color-2),
+    0 12px 24px var(--shadow-color-3);
+
+    --shadow-raised-lg: 
+     0 4px 8px var(--shadow-color),
+     0 12px 24px var(--shadow-color-2),
+     0 24px 48px var(--shadow-color-3);
+
+}
