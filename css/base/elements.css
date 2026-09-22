@@ -27,7 +27,7 @@ a {
 
 .main-header {
   font-family: var(--font-main-header);
-  font-size: 80px;
+  font-size: clamp(2.5rem, 8vw, 80px);
   color: var(--color-header-main);
   text-align: center;
   margin: var(--spacing-3xl);
