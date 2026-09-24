@@ -45,9 +45,56 @@ a {
 
 .sub-header {
   margin-bottom: var(--spacing-lg);
+  font-weight: 600;
 }
 
 h2 { 
   color: var(--color-text-top-section);
 }
 
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  padding: 0.5rem 1rem;
+  background: #000;
+  color: #fff;
+  z-index: 1000;
+}
+.skip-link:focus { top: 1rem; }
+
+html { scroll-behavior: smooth; }
+section[id], article[id] { scroll-margin-top: 1rem; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* keyboard focus for the radio-in-label theme picker */
+.theme-pick:has(input:focus-visible),
+.theme-control:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 3px;
+}
+
+.btn {
+  margin: var(--spacing-md) 0;
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  background: var(--color-button-bg, );
+  color: var(--color-on-accent);
+  font-weight: 600;
+  text-decoration: none;
+
+  &&:hover {
+    background-color: var(--color-button-hover-bg);
+  }
+  }   
+
+.btn-secondary { 
+  background: transparent; 
+  color: inherit; 
+  border: 2px solid currentColor; 
+  &&:hover { 
+    background-color: var(--color-button-bg); 
+    color: var(--color-on-accent); 
+  }
+}
