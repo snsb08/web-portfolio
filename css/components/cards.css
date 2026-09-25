@@ -260,3 +260,152 @@
     grid-template-columns: 1fr;
   }
 }
+
+
+/* ==========================================================================
+   Contact & Languages cards
+   Designed to echo the .skills-grid pattern: a label plus a value, repeated
+   in a responsive grid. Add to your source stylesheet, then rebuild.
+   ========================================================================== */
+
+/* ---- Contact: icon + label tiles instead of a bullet list ---- */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.contact-grid li {
+  display: contents; /* the <a> becomes the actual grid/flex item */
+}
+
+.contact-tile {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.6rem;
+  background: var(--color-surface);
+  color: var(--color-text);
+  text-decoration: none;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.contact-tile:hover,
+.contact-tile:focus-visible {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-raised-sm);
+  transform: translateY(-1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-tile { transition: none; }
+  .contact-tile:hover { transform: none; }
+}
+
+.contact-tile:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.contact-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: light-dark(var(--accent-100), var(--accent-800));
+  color: light-dark(var(--accent-700), var(--accent-200));
+}
+.contact-icon svg { width: 1.15rem; height: 1.15rem; }
+
+.contact-tile .contact-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0; /* lets long emails/URLs truncate instead of overflowing */
+}
+
+.contact-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+}
+
+.contact-value {
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Non-link tiles (e.g. a plain "City" tile) get the same look, no hover state */
+.contact-tile.static {
+  cursor: default;
+}
+.contact-tile.static:hover {
+  border-color: var(--color-border);
+  box-shadow: var(--shadow-sm);
+  transform: none;
+}
+
+/* ---- Languages: proficiency tiles instead of a bullet list ---- */
+
+.languages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+  gap: 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.language-tile {
+  padding: 0.25rem 0.5rem;
+  /* border: 1px solid var(--color-border); */
+  /* border-radius: 0.6rem; */
+  background: var(--color-surface);
+  /* box-shadow: var(--shadow-sm); */
+  border-left: 3px solid var(--color-accent, #ff5b6e);
+}
+
+.language-name {
+  display: block;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 0.4rem;
+}
+
+.language-level {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.5rem;
+}
+
+/* Proficiency shown as filled dots. role="img" + aria-label carries the
+   meaning to screen readers; the dots themselves are decorative. */
+.language-dots {
+  display: flex;
+  gap: 0.3rem;
+}
+.language-dots span {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--color-border-strong);
+}
+.language-dots span.filled {
+  background: var(--color-accent);
+}
+
+.languages-also {
+  padding: 0.5rem;
+  font-size: 0.8rem;
+}
