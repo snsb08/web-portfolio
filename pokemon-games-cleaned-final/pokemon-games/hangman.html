@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokémon Hangman | Sheyla Norton</title>
+    <meta
+      name="description"
+      content="Guess the Pokémon name before Team Rocket captures Pikachu in this hangman game that uses PokéAPI."
+    />
+    <meta name="theme-color" content="#303092" />
+    <link rel="icon" href="images/favicon.png" type="image/png" />
+    <link
+      rel="preload"
+      href="fonts/press-start-2p-latin-400-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="fonts/manrope-latin-wght-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header class="site-header">
+      <h1>Pok&eacute;mon Hangman</h1>
+    </header>
+    <main id="main" class="panel stack">
+      <p class="instructions">
+        Team Rocket wants to capture Pikachu. <br />
+        Don't let them get to him by guessing the correct word.
+      </p>
+      <img
+        id="scene"
+        class="scene"
+        src="images/team2pika1.jpg"
+        alt="Scene: Team Rocket is closing in on Pikachu."
+        width="600"
+        height="300"
+      />
+      <p class="hint">Hint: it is a Pok&eacute;mon name.</p>
+      <p class="status">
+        <span class="chip"
+          >Wrong guesses <span id="wrong-count">0</span> of
+          <span id="max-wrong">8</span></span
+        >
+        <span class="chip">Score <span id="score">0</span></span>
+      </p>
+      <div id="reveal" class="reveal"></div>
+      <p id="word" class="word"></p>
+      <div
+        id="keyboard"
+        class="keyboard"
+        role="group"
+        aria-label="Letter guesses"
+      ></div>
+      <noscript><p>This game needs JavaScript to run.</p></noscript>
+      <p id="message" class="message"></p>
+      <p id="sr-message" class="visually-hidden" role="status"></p>
+      <div class="actions">
+        <button type="button" id="play-again" class="btn">Play Again</button>
+        <a class="btn btn--secondary" href="index.html">Back Home</a>
+      </div>
+
+      <section aria-labelledby="scores-heading" class="stack">
+        <h2 id="scores-heading">High Scores</h2>
+        <form id="score-form" class="score-form">
+          <label for="player-name">Your name</label>
+          <input
+            type="text"
+            id="player-name"
+            name="player"
+            maxlength="20"
+            autocomplete="nickname"
+            required
+          />
+          <button type="submit" id="save-score" class="btn" disabled>
+            Save score
+          </button>
+        </form>
+        <p id="scores-empty" class="hint">
+          No scores yet. Win a round, then save your score.
+        </p>
+        <ol id="score-list" class="score-list"></ol>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <p>
+        &copy; 2022&ndash;2026 Sheyla Norton &middot; Originally built for
+        WDD330 at BYU&ndash;Idaho
+      </p>
+      <p>
+        Unofficial fan project. Pok&eacute;mon and related names are trademarks
+        of Nintendo, Game Freak, and Creatures Inc.
+      </p>
+    </footer>
+    <script type="module" src="hangman.js"></script>
+  </body>
+</html>

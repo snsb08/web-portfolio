@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokémon Games | Sheyla Norton</title>
+    <meta
+      name="description"
+      content="Play Pokémon-themed browser games: a memory matching game and a hangman game powered by PokéAPI."
+    />
+    <meta name="theme-color" content="#303092" />
+    <link rel="icon" href="images/favicon.png" type="image/png" />
+    <link
+      rel="preload"
+      href="fonts/press-start-2p-latin-400-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="fonts/manrope-latin-wght-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header class="site-header">
+      <h1>Pok&eacute;mon Games</h1>
+      <p class="tagline">Pick a game</p>
+    </header>
+    <main id="main" class="panel stack">
+      <div class="hero-art">
+        <img
+          src="images/pikachu.png"
+          alt="Pikachu happily waving"
+          width="100"
+          height="100"
+        />
+        <img
+          src="images/ball.png"
+          alt="front view of pokeball"
+          width="100"
+          height="100"
+        />
+        <img
+          src="images/pokemon4.png"
+          alt="Snorlax laying down, smiling and waving"
+          width="100"
+          height="100"
+        />
+      </div>
+      <ul class="game-list" role="list">
+        <li class="game-card">
+          <span class="chip">Matching game</span>
+          <h2>Memory</h2>
+          <p>Flip the cards and match all the Pok&eacute;mon pairs.</p>
+          <a class="btn" href="memory.html">Play Memory</a>
+        </li>
+        <li class="game-card">
+          <span class="chip">Word game</span>
+          <h2>Hangman</h2>
+          <p>Guess the Pok&eacute;mon before Team Rocket captures Pikachu.</p>
+          <a class="btn" href="hangman.html">Play Hangman</a>
+        </li>
+      </ul>
+    </main>
+    <footer class="site-footer">
+      <p>
+        &copy; 2022&ndash;2026 Sheyla Norton &middot; Originally built for
+        WDD330 at BYU&ndash;Idaho
+      </p>
+      <p>
+        Unofficial fan project. Pok&eacute;mon and related names are trademarks
+        of Nintendo, Game Freak, and Creatures Inc.
+      </p>
+    </footer>
+  </body>
+</html>

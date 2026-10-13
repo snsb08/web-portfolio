@@ -1,0 +1,558 @@
+/* ==========================================================================
+   Pokémon Games: retro-modern theme
+   1. Fonts  2. Tokens  3. Reset & base  4. Pixel edges  5. Layout
+   6. Components  7. Pages  8. Motion  9. Forced colors
+   Note: IDs in the HTML (#word, #keyboard, ...) are JS hooks only.
+   All styling uses classes.
+   ========================================================================== */
+
+/* 1. Fonts (self-hosted, SIL OFL: see fonts/LICENSE-*.txt) ----------------- */
+@font-face {
+  font-family: "Press Start 2P";
+  src: url("fonts/press-start-2p-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Manrope";
+  src: url("fonts/manrope-latin-wght-normal.woff2") format("woff2");
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+/* 2. Tokens ---------------------------------------------------------------- */
+:root {
+  color-scheme: dark;
+
+  --color-bg: #14143a;
+  --color-panel: #1a1a48;
+  --color-surface: #272768;
+  --color-text: #f1f2ff;
+  --color-muted: #c3caf5;
+  --color-accent: #ffcb05;
+  --color-accent-hover: #ffe27a;
+  --color-accent-shadow: #8a6b00;
+  --color-blue: #3b4cca;
+  --color-line: #5568e0;
+  --color-ink: #14143a;
+  --color-lost: #ffb3bf;
+  --color-focus: #fff;
+
+  --font-pixel: "Press Start 2P", "Courier New", monospace;
+  --font-body:
+    "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --px: 4px; /* thickness of the pixel borders */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --content-width: 60rem;
+
+  /* default pixel-edge colors; components override both */
+  --edge-light: var(--color-line);
+  --edge-dark: var(--color-line);
+}
+
+/* 3. Reset & base ---------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-block: var(--space-3);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  color: var(--color-text);
+  /* the original tile pattern, kept as a faint texture */
+  background:
+    linear-gradient(rgb(20 20 58 / 0.94), rgb(20 20 58 / 0.94)),
+    url("images/back_pattern.png"), var(--color-bg);
+
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+h1,
+h2 {
+  font-family: var(--font-pixel);
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--color-accent);
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: clamp(1.4rem, 5.5vw, 2.75rem);
+  text-shadow: 4px 4px 0 var(--color-blue);
+}
+
+h2 {
+  font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 6px; /* clears the pixel edge */
+}
+
+/* 4. Pixel edges: one shared recipe for every bordered element ------------- */
+.panel,
+.game-card,
+.chip,
+.btn,
+.card,
+.keyboard button,
+.score-form input,
+.scene,
+.instructions {
+  box-shadow:
+    0 calc(var(--px) * -1) 0 0 var(--edge-light),
+    0 var(--px) 0 0 var(--edge-dark),
+    calc(var(--px) * -1) 0 0 0 var(--edge-light),
+    var(--px) 0 0 0 var(--edge-dark);
+}
+
+/* 5. Layout ---------------------------------------------------------------- */
+.site-header,
+main,
+.site-footer {
+  width: min(100% - 2.5rem, var(--content-width));
+  margin-inline: auto;
+  text-align: center;
+}
+
+.panel {
+  --edge-light: var(--color-line);
+  --edge-dark: var(--color-line);
+  padding: clamp(1.25rem, 4vw, 2.5rem);
+  background: var(--color-panel);
+}
+
+main {
+  flex: 1;
+}
+
+.stack > * + * {
+  margin-top: var(--space-3);
+}
+
+.site-footer {
+  padding: var(--space-2);
+  border-top: var(--px) solid var(--color-line);
+  color: var(--color-muted);
+  font-size: 0.875rem;
+}
+
+.site-footer p + p {
+  margin-top: 0.25rem;
+}
+
+.skip-link {
+  position: absolute;
+  top: -4rem;
+  left: var(--space-2);
+  z-index: 10;
+  padding: var(--space-1) var(--space-2);
+  background: var(--color-accent);
+  color: var(--color-ink);
+  font-weight: 800;
+}
+
+.skip-link:focus {
+  top: var(--space-2);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* 6. Components ------------------------------------------------------------ */
+.tagline {
+  margin-top: var(--space-2);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-muted);
+}
+
+.chip {
+  --edge-light: var(--color-line);
+  --edge-dark: var(--color-line);
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.btn,
+.keyboard button {
+  --edge-light: #fff;
+  --edge-dark: var(--color-accent-shadow);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 2.75rem;
+  padding: 0.75rem 1.5rem;
+  border: 0;
+  border-radius: 0;
+  background: var(--color-accent);
+  color: var(--color-ink);
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn:hover,
+.keyboard button:hover:not([aria-disabled="true"]) {
+  background: var(--color-accent-hover);
+}
+
+.btn--secondary {
+  --edge-light: var(--color-line);
+  --edge-dark: var(--color-line);
+  background: transparent;
+  color: var(--color-accent);
+}
+
+.btn--secondary:hover {
+  background: var(--color-surface);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+}
+
+.status {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2) var(--space-3);
+}
+
+.message {
+  min-height: 1.6em; /* reserve space so the layout doesn't jump */
+  font-weight: 700;
+  color: var(--color-muted);
+}
+
+.hint {
+  color: var(--color-muted);
+}
+
+.instructions {
+  --edge-light: var(--color-accent);
+  --edge-dark: var(--color-accent);
+  max-width: 36rem;
+  margin-inline: auto;
+  padding: var(--space-2);
+  background: var(--color-surface);
+}
+
+/* 7. Pages ----------------------------------------------------------------- */
+
+/* Home */
+.hero-art {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-3);
+}
+
+.hero-art img {
+  width: clamp(4rem, 18vw, 6.25rem);
+  filter: drop-shadow(0 4px 0 rgb(0 0 0 / 0.35));
+}
+
+.game-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
+  gap: var(--space-4);
+  padding: 0;
+  list-style: none;
+}
+
+.game-card {
+  --edge-light: var(--color-line);
+  --edge-dark: var(--color-line);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  background: var(--color-surface);
+  text-align: left;
+}
+
+.game-card p {
+  color: var(--color-muted);
+}
+
+.game-card .btn {
+  margin-top: auto;
+}
+
+/* play-triangle drawn in CSS: no font glyph needed, ignored by screen readers */
+.game-card .btn::before {
+  content: "";
+  border-block: 0.35em solid transparent;
+  border-left: 0.6em solid currentColor;
+}
+
+/* Memory */
+.board {
+  --columns: 4;
+  display: grid;
+  grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+  gap: clamp(0.75rem, 3vw, 1.25rem);
+  width: min(100%, 28rem);
+  margin-inline: auto;
+}
+
+.card {
+  --edge-light: #fff; /* face down */
+  --edge-dark: #fff;
+  display: block;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+
+.card--up {
+  --edge-light: var(--color-accent);
+  --edge-dark: var(--color-accent);
+}
+
+.card--up img {
+  padding: 0.25rem;
+  background: var(--color-accent-hover);
+}
+
+.card--matched {
+  --edge-light: var(--color-line);
+  --edge-dark: var(--color-line);
+  cursor: default;
+}
+
+.card--matched img {
+  padding: 25%;
+  background: var(--color-surface);
+}
+
+/* Hangman */
+.scene {
+  --edge-light: var(--color-line);
+  --edge-dark: var(--color-line);
+  width: min(100%, 600px);
+  margin-inline: auto;
+  aspect-ratio: 2 / 1;
+  object-fit: contain;
+  background: var(--color-bg);
+}
+
+.reveal img {
+  width: 150px;
+  margin-inline: auto;
+  image-rendering: pixelated; /* crisp sprite when scaled up */
+}
+
+.word {
+  font-family: var(--font-pixel);
+  font-size: clamp(1.1rem, 4.5vw, 2rem);
+  line-height: 1.6;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  min-height: 1.6em; /* reserve space so the page doesn't jump when the word loads */
+}
+
+.word--lost {
+  color: var(--color-lost);
+}
+
+.keyboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  max-width: 40rem;
+  min-height: 11.5rem; /* about three rows of keys, avoids a jump on load */
+  margin-inline: auto;
+}
+
+.keyboard button {
+  min-width: 2.75rem;
+  padding: 0.5rem;
+  text-transform: uppercase;
+}
+
+/* Guessed keys: aria-disabled keeps focus; color AND shape tell them apart */
+.keyboard button[aria-disabled="true"] {
+  cursor: not-allowed;
+}
+
+.keyboard button[aria-disabled="true"]:not(.key--correct, .key--wrong) {
+  opacity: 0.45; /* game over or loading */
+}
+
+.keyboard .key--correct {
+  --edge-light: var(--color-accent); /* yellow ring around correct letters */
+  --edge-dark: var(--color-accent);
+  background: var(--color-blue);
+  color: #fff;
+}
+
+.keyboard .key--wrong {
+  --edge-light: var(--color-line);
+  --edge-dark: var(--color-line);
+  background: transparent;
+  color: var(--color-muted);
+  text-decoration: line-through;
+}
+
+.score-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+.score-form label {
+  font-weight: 700;
+}
+
+.score-form input {
+  --edge-light: var(--color-accent);
+  --edge-dark: var(--color-accent);
+  min-height: 2.75rem;
+  padding: 0.5rem 1rem;
+  border: 0;
+  background: var(--color-text);
+  color: var(--color-ink);
+}
+
+.score-list {
+  width: min(100%, 20rem);
+  margin-inline: auto;
+  padding-left: 2.5rem;
+  text-align: left;
+}
+
+.score-list li::marker {
+  color: var(--color-accent);
+  font-weight: 800;
+}
+
+/* 8. Motion (only for people who haven't asked for less) ------------------- */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.88);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .site-header h1 {
+    animation: fade-up 0.8s ease-out both;
+  }
+
+  .btn,
+  .keyboard button,
+  .card,
+  .hero-art img {
+    transition:
+      background-color 0.15s,
+      transform 0.15s;
+  }
+
+  .btn:hover,
+  .hero-art img:hover {
+    transform: translateY(-3px);
+  }
+
+  .btn:active {
+    transform: translateY(2px);
+  }
+
+  .card:hover:not(.card--matched) {
+    transform: scale(1.05);
+  }
+
+  .card--up img {
+    animation: pop 0.2s ease-out;
+  }
+}
+
+/* 9. Forced colors (Windows High Contrast removes box-shadows) ------------- */
+@media (forced-colors: active) {
+  .panel,
+  .game-card,
+  .chip,
+  .btn,
+  .card,
+  .keyboard button,
+  .score-form input,
+  .scene,
+  .instructions {
+    border: 2px solid CanvasText;
+  }
+}
