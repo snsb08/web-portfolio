@@ -98,3 +98,18 @@ section[id], article[id] { scroll-margin-top: 1rem; }
     color: var(--color-on-accent); 
   }
 }
+
+.project-btn {
+  display: inline-block;
+  margin-top: var(--spacing-md);
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  background: var(--color-button-bg);
+  color: var(--color-on-accent);
+  font-weight: 600;
+  text-decoration: none;
+
+  &&:hover {
+    background-color: var(--color-button-hover-bg);
+  }
+}
